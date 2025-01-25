@@ -10,7 +10,7 @@ function Home() {
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      axios.get('http://localhost:2000/api/products')
+      axios.get('http://localhost:5000/api/products')
         .then((response) => {
           setProducts(response.data);
           setLoading(false);
@@ -29,7 +29,7 @@ function Home() {
     <NavbarSimple>
     
     </NavbarSimple>
-     <div className="min-h-screen bg-gray-100">
+     <div className="min-h-screen">
      <header className="bg-blue-600 p-4 text-white text-center text-2xl font-bold">E-Commerce Store</header>
      <div className="container mx-auto p-6">
        <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
