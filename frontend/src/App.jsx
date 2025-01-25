@@ -1,10 +1,12 @@
-
-
+import { NavbarSimple } from "./components/Navbar"
 
 function App() {
   return (
     <>
-   <div className="text-7xl text-blue-500">HEllo</div>
+  <NavbarSimple>
+    
+  </NavbarSimple>
+  
     </>
   )
 }
