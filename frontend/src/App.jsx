@@ -1,13 +1,22 @@
 import Home from "./pages/Home"
-// import UploadProduct from "./pages/UploadProduct"
-
+import ProductUploadForm from "./pages/ProductUploadForm"
+import UploadProduct from "./pages/UploadProduct"
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 function App() {
   return (
     <>
 
-    <Home />
-
-    {/* <UploadProduct /> */}
+    {/* <Home /> */}
+    {/* <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header> */}
+    <UploadProduct />
+    {/* <ProductUploadForm /> */}
     </>
   )
 }

@@ -1,28 +1,18 @@
 import { useState } from "react";
-import axios from "axios";
-import Home from "./Home";
 
-export default function UploadProduct() {
+export default function ProductUploadForm() {
   const [product, setProduct] = useState({
     name: "",
     price: "",
     image: null,
   });
+  const [preview, setPreview] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProduct((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
   const handleFileChange = (e) => {
-    setProduct((prevState) => ({
-      ...prevState,
-      image: e.target.files[0],
-    }));
-
     const file = e.target.files[0];
     if (file) {
       setProduct({ ...product, image: file });
@@ -36,47 +26,14 @@ export default function UploadProduct() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", product.name);
-    formData.append("price", product.price);
-    formData.append("image", product.image);
-
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/upload",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      alert(response.data.message);
-      setProduct({ name: "", price: "", image: null });
-      window.location.reload();
-    } catch (error) {
-      console.error("Error uploading product:", error);
-      alert("Failed to upload product.");
-    }
+    console.log("Uploading Product:", product);
+    window.location.reload();
   };
 
-
-  const [preview, setPreview] = useState(null);
-
-  // const handleChange = (e) => {
-  //   setProduct({ ...product, [e.target.name]: e.target.value });
-  // };
-
-
-
-
-
   return (
-    <>
-      <Home />
-
-      <div className="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full mx-auto">
+    <div className="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
         Upload New Product
       </h2>
@@ -168,7 +125,5 @@ export default function UploadProduct() {
         </button>
       </form>
     </div>
-
-    </>
   );
 }
