@@ -130,7 +130,7 @@ export default function UploadProduct() {
               <img
                 src={preview}
                 alt="Preview"
-                className="w-full h-40 object-cover rounded-lg mx-auto"
+                className="w-full h-40 object-contain rounded-lg mx-auto"
               />
             ) : (
               <div>
