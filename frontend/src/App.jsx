@@ -1,11 +1,16 @@
 import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
+
 
 import UploadProduct from "./pages/UploadProduct"
 
 function App() {
   return (
     <>
-<UploadProduct />
+{/* <UploadProduct /> */}
+{/* <Login /> */}
+<Signup />
     {/* <Home /> */}
   
     </>
