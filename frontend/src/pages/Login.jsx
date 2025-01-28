@@ -1,4 +1,4 @@
-// import React from "react";
+
 
 const Login = () => {
   return (
@@ -34,11 +34,11 @@ const Login = () => {
           </div>
           <button className="w-full bg-red-500 text-white p-3 rounded-lg font-semibold">Sign in</button>
           <button className="w-full flex items-center justify-center border mt-4 p-3 rounded-lg">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-              alt="Google"
-              className="w-5 h-5 mr-2"
-            />
+          <img
+                src="/Sign-img/Google.png"
+                alt="Google"
+                className="w-9 h-9 mr-2"
+              />
             Sign in with Google
           </button>
         </form>
