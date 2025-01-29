@@ -7,8 +7,11 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router";
+<<<<<<< HEAD
 // import Signup from "../pages/Signup";
 
+=======
+>>>>>>> dc26034 (Login and Signup Backend)
  
 function NavList() {
   return (

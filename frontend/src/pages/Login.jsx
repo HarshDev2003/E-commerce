@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 
 import { useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
+=======
+import { useState } from "react";
+import { Link } from "react-router";
+import axios from "axios";
+
+>>>>>>> dc26034 (Login and Signup Backend)
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

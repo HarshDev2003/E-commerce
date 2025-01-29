@@ -14,7 +14,11 @@ dotenv.config();
 app.use(express.json());
 app.use('/uploads',express.static('uploads'));
 app.use(express.json());
+<<<<<<< HEAD
 app.use(cors({ origin: "http://localhost:5000", credentials: true }));
+=======
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+>>>>>>> dc26034 (Login and Signup Backend)
 
 app.use(
   session({
@@ -83,15 +87,26 @@ const storage = multer.diskStorage({
   // **Login API**
  // Signup route
 app.post("/signup", async (req, res) => {
+<<<<<<< HEAD
   const { phone, password } = req.body;
 
   // Validate input
   if (!phone || !password) {
+=======
+  const { email, password } = req.body;
+
+  // Validate input
+  if (!email || !password) {
+>>>>>>> dc26034 (Login and Signup Backend)
     return res.status(400).json({ error: "Please provide both email and password" });
   }
 
   // Check if the user already exists
+<<<<<<< HEAD
   const query = "SELECT * FROM users WHERE phone = ?";
+=======
+  const query = "SELECT * FROM users WHERE email = ?";
+>>>>>>> dc26034 (Login and Signup Backend)
   db.query(query, [email], async (err, results) => {
     if (err) {
       return res.status(500).json({ error: "Database error" });
@@ -105,14 +120,24 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the new user into the database
+<<<<<<< HEAD
     const insertQuery = "INSERT INTO users (name,phone , password) VALUES (?, ?, ?)";
+=======
+    const insertQuery = "INSERT INTO users (email, password) VALUES (?, ?)";
+>>>>>>> dc26034 (Login and Signup Backend)
     db.query(insertQuery, [email, hashedPassword], (err, result) => {
       if (err) {
         return res.status(500).json({ error: "Error while creating user" });
       }
+<<<<<<< HEAD
       console.log(phone,password)
       // Create a JWT token
       const token = jwt.sign({ userId: result.insertId, phone }, JWT_SECRET, { expiresIn: "1h" });
+=======
+
+      // Create a JWT token
+      const token = jwt.sign({ userId: result.insertId, email }, JWT_SECRET, { expiresIn: "1h" });
+>>>>>>> dc26034 (Login and Signup Backend)
 
       // Send response with the token
       return res.status(201).json({ message: "Signup successful", token });
