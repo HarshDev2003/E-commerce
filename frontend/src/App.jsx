@@ -1,17 +1,21 @@
 import Home from "./pages/Home"
-import Login from "./pages/Login"
+import { BrowserRouter, Routes, Route } from "react-router";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup"
+import UploadProduct from "./pages/UploadProduct";
 
-
-import UploadProduct from "./pages/UploadProduct"
 
 function App() {
   return (
     <>
-{/* <UploadProduct /> */}
-{/* <Login /> */}
-<Signup />
-    {/* <Home /> */}
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/upload" element={<UploadProduct />} />
+    </Routes>
+  </BrowserRouter>
   
     </>
   )

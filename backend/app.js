@@ -4,15 +4,26 @@ import mysql from "mysql2"
 import dotenv from 'dotenv';
 import multer from 'multer';
 import path from 'path';
-
-
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import session from "express-session";
 
 const app = express();
 app.use(cors());
 dotenv.config();
 app.use(express.json());
 app.use('/uploads',express.static('uploads'));
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
+app.use(
+  session({
+    secret: "your_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, httpOnly: true },
+  })
+);
 
 
 const db = mysql.createConnection({
@@ -68,6 +79,83 @@ const storage = multer.diskStorage({
       }
     });
   });
+
+  // **Login API**
+ // Signup route
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+
+  // Validate input
+  if (!email || !password) {
+    return res.status(400).json({ error: "Please provide both email and password" });
+  }
+
+  // Check if the user already exists
+  const query = "SELECT * FROM users WHERE email = ?";
+  db.query(query, [email], async (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    if (results.length > 0) {
+      return res.status(400).json({ error: "User already exists" });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert the new user into the database
+    const insertQuery = "INSERT INTO users (email, password) VALUES (?, ?)";
+    db.query(insertQuery, [email, hashedPassword], (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: "Error while creating user" });
+      }
+
+      // Create a JWT token
+      const token = jwt.sign({ userId: result.insertId, email }, JWT_SECRET, { expiresIn: "1h" });
+
+      // Send response with the token
+      return res.status(201).json({ message: "Signup successful", token });
+    });
+  });
+});
+
+// Login route (same as previous)
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  // Validate input
+  // if (!email || !password) {
+  //   return res.status(400).json({ error: "Please provide both email and password" });
+  // }
+
+  // Check if the user exists in the database
+  const query = "SELECT * FROM users WHERE email = ?";
+  db.query(query, [email], async (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    if (results.length === 0) {
+      return res.status(401).json({ error: "User not found" });
+    }
+
+    // Compare password
+    const user = results[0];
+    // const isPasswordCorrect =  compare(password, user.password);
+
+    if (password !== user.password) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Create JWT token
+    // const token = jwt.sign({ userId: user.id, email: user.email });
+
+    // Send response with the token
+    return res.json({ message: "Login successful" });
+  });
+});
+
   
   const PORT = process.env.PORT || 2000;
 

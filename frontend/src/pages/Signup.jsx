@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 
 const Signup = () => {
@@ -62,7 +63,7 @@ const Signup = () => {
           </form>
   
           <p className="mt-4 text-gray-600">
-            Already have an account? <a href="#" className="text-blue-500 font-semibold">Sign in here!</a>
+            Already have an account? <Link to ="/login" className="text-blue-500 font-semibold">Sign in here!</Link>
           </p>
         </div>
       </div>
