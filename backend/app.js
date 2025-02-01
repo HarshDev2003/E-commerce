@@ -14,7 +14,7 @@ dotenv.config();
 app.use(express.json());
 app.use('/uploads',express.static('uploads'));
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://localhost:5000", credentials: true }));
 
 app.use(
   session({
@@ -83,15 +83,15 @@ const storage = multer.diskStorage({
   // **Login API**
  // Signup route
 app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const { phone, password } = req.body;
 
   // Validate input
-  if (!email || !password) {
+  if (!phone || !password) {
     return res.status(400).json({ error: "Please provide both email and password" });
   }
 
   // Check if the user already exists
-  const query = "SELECT * FROM users WHERE email = ?";
+  const query = "SELECT * FROM users WHERE phone = ?";
   db.query(query, [email], async (err, results) => {
     if (err) {
       return res.status(500).json({ error: "Database error" });
@@ -105,14 +105,14 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the new user into the database
-    const insertQuery = "INSERT INTO users (email, password) VALUES (?, ?)";
+    const insertQuery = "INSERT INTO users (name,phone , password) VALUES (?, ?, ?)";
     db.query(insertQuery, [email, hashedPassword], (err, result) => {
       if (err) {
         return res.status(500).json({ error: "Error while creating user" });
       }
-
+      console.log(phone,password)
       // Create a JWT token
-      const token = jwt.sign({ userId: result.insertId, email }, JWT_SECRET, { expiresIn: "1h" });
+      const token = jwt.sign({ userId: result.insertId, phone }, JWT_SECRET, { expiresIn: "1h" });
 
       // Send response with the token
       return res.status(201).json({ message: "Signup successful", token });

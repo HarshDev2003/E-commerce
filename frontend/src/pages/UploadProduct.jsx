@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Home from "./Home";
+// import Home from "./Home";
 
 export default function UploadProduct() {
   const [product, setProduct] = useState({

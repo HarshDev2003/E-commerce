@@ -1,5 +1,7 @@
 
-
+import { useState } from "react";
+import { Link } from "react-router";
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -86,7 +88,7 @@ const Login = () => {
         </form>
 
         <p className="mt-4 text-gray-600">
-          Don’t have an account? <a href="#" className="text-red-500 font-semibold">Sign up for free!</a>
+          Don’t have an account? <Link to="/signup" className="text-red-500 font-semibold">Sign up for free!</Link>
         </p>
       </div>
 

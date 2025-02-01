@@ -7,10 +7,8 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router";
-<<<<<<< HEAD
-import Signup from "../pages/Signup";
-=======
->>>>>>> dc26034039529f4c4e2753877708447ab4707f1e
+// import Signup from "../pages/Signup";
+
  
 function NavList() {
   return (
@@ -46,21 +44,6 @@ function NavList() {
         </a>
       </Typography>
       <Typography
-<<<<<<< HEAD
-  as="li"
-  variant="small"
-  color="blue-gray"
-  className="p-1 font-medium"
->
-  <Link
-    to="/login"
-    className="flex items-center hover:text-blue-500 transition-colors"
-  >
-    Login/Signup
-  </Link>
-</Typography>
-
-=======
         as="li"
         variant="small"
         color="blue-gray"
@@ -70,7 +53,7 @@ function NavList() {
           Login/Signup
         </Link>
       </Typography>
->>>>>>> dc26034039529f4c4e2753877708447ab4707f1e
+
     </ul>
   );
 }
