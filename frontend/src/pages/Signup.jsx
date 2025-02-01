@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 import { Link } from "react-router";
 const Signup = () => {
@@ -61,9 +62,15 @@ const Signup = () => {
             </button>
           </form>
   
+<<<<<<< HEAD
           <Link to = "/login" className="mt-4 text-gray-600">
             Already have an account? <a href="#" className="text-blue-500 font-semibold">Sign in here!</a>
           </Link>
+=======
+          <p className="mt-4 text-gray-600">
+            Already have an account? <Link to ="/login" className="text-blue-500 font-semibold">Sign in here!</Link>
+          </p>
+>>>>>>> dc26034039529f4c4e2753877708447ab4707f1e
         </div>
       </div>
     );
