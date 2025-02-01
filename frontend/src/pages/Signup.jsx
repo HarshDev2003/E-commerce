@@ -62,17 +62,11 @@ const Signup = () => {
             </button>
           </form>
   
-<<<<<<< HEAD
 
-          <Link to = "/login" className="mt-4 text-gray-600">
-            Already have an account? <a href="#" className="text-blue-500 font-semibold">Sign in here!</a>
-          </Link>
-
-=======
           <p className="mt-4 text-gray-600">
             Already have an account? <Link to ="/login" className="text-blue-500 font-semibold">Sign in here!</Link>
           </p>
->>>>>>> dc26034 (Login and Signup Backend)
+
         </div>
       </div>
     );

@@ -2,7 +2,6 @@ import { NavbarSimple } from "../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,10 +36,7 @@ function Home() {
         <h1 className="text-3xl font-bold text-center mb-8">Our Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white shadow-md rounded-lg p-4"
-            >
+            <div key={product.id} className="bg-white shadow-md rounded-lg p-4">
               <img
                 src={product.image}
                 alt={product.name}
@@ -54,20 +50,22 @@ function Home() {
               </p>
               <div className="mt-4 flex justify-evenly">
                 <button
-                  
-                  className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center py-[0.7em] px-[1.7em] text-[18px] text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2 cursor-pointer"
                   type="button"
+                  className="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
                 >
                   Add to Cart
                 </button>
-                <button className="text-[#090909] py-[0.7em] px-[1.7em] text-[18px] rounded-lg bg-[#e8e8e8] cursor-pointer border border-[#e8e8e8] transition-all duration-300 shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff] active:text-[#666] active:shadow-inset-[4px_4px_12px_#c5c5c5,-4px_-4px_12px_#ffffff]">
-                  Buy Now
+
+                <button
+                  type="button"
+                  className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+                >
+                  Buy now
                 </button>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </>
   );
