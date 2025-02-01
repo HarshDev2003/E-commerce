@@ -67,21 +67,6 @@ function Home() {
           ))}
         </div>
 
-        {/* Cart Section */}
-        <div className="mt-10 p-6 bg-gray-100 rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-          {cart.length > 0 ? (
-            <ul>
-              {cart.map((item, index) => (
-                <li key={index} className="border-b py-2">
-                  <span className="font-semibold">{item.name}</span> - Rs {item.price}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-600">Your cart is empty.</p>
-          )}
-        </div>
       </div>
     </>
   );

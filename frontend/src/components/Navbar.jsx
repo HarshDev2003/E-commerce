@@ -6,6 +6,8 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router";
+import Signup from "../pages/Signup";
  
 function NavList() {
   return (
@@ -41,15 +43,19 @@ function NavList() {
         </a>
       </Typography>
       <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
-        <a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-          Login/Signup
-        </a>
-      </Typography>
+  as="li"
+  variant="small"
+  color="blue-gray"
+  className="p-1 font-medium"
+>
+  <Link
+    to="/login"
+    className="flex items-center hover:text-blue-500 transition-colors"
+  >
+    Login/Signup
+  </Link>
+</Typography>
+
     </ul>
   );
 }
